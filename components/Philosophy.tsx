@@ -11,7 +11,7 @@ const philosophyCards = [
     {
         title: '品牌願景',
         description: '打造全齡化智慧康養生態，成為家庭健康的後盾，鏈結全球華人健康生活圈。',
-        imageUrl: 'https://drive.google.com/thumbnail?id=1wPJ1AgkFRHPe9VAhXFN-_gqTOxkTbRRJ&sz=w1920',
+        imageUrl: 'https://drive.google.com/thumbnail?id=1fxAamIDszd2yhPz9z_NYkCPHWda_p_us&sz=w1920',
         alt: 'Vision'
     },
     {
