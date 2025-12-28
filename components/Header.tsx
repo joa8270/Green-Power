@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 
@@ -21,8 +20,20 @@ const Header: React.FC = () => {
         { href: '#technology', label: '智能科技' },
     ];
 
-    const handleLinkClick = () => {
-        setMobileMenuOpen(false);
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+            const headerOffset = 80; // Header height is h-20, which is 80px
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+        setMobileMenuOpen(false); // Close mobile menu on click
     };
 
     return (
@@ -35,11 +46,11 @@ const Header: React.FC = () => {
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
                             {navLinks.map(link => (
-                                <a key={link.href} href={link.href} className="text-slate-600 hover:text-emerald-700 px-3 py-2 text-sm font-medium transition-colors">
+                                <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-slate-600 hover:text-emerald-700 px-3 py-2 text-sm font-medium transition-colors">
                                     {link.label}
                                 </a>
                             ))}
-                            <a href="#contact" className="bg-emerald-600 text-white hover:bg-emerald-700 px-5 py-2.5 rounded-full text-sm font-bold transition-transform transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30">
+                            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="bg-emerald-600 text-white hover:bg-emerald-700 px-5 py-2.5 rounded-full text-sm font-bold transition-transform transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30">
                                 預約體驗
                             </a>
                         </div>
@@ -57,11 +68,11 @@ const Header: React.FC = () => {
                 <div className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg" id="mobile-menu">
                     <div className="px-4 pt-2 pb-6 space-y-2">
                         {navLinks.map(link => (
-                             <a key={link.href} href={link.href} onClick={handleLinkClick} className="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-emerald-50 hover:text-emerald-700">
+                             <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-emerald-50 hover:text-emerald-700">
                                  {link.label}
                              </a>
                         ))}
-                        <a href="#contact" onClick={handleLinkClick} className="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-emerald-600 text-white">
+                        <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-emerald-600 text-white">
                             立即預約
                         </a>
                     </div>

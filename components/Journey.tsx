@@ -44,7 +44,7 @@ const journeySteps = [
             { icon: <ClockIcon />, text: '耗時：約 40 分鐘' },
             { icon: <CheckIcon />, text: '重點：深層放鬆、感受改變' }
         ],
-        imageUrl: 'https://drive.google.com/thumbnail?id=1gYiv_X71ghNti8xL6nsMk90S1Dm3NrpC&sz=w800',
+        imageUrl: 'https://drive.google.com/thumbnail?id=10hUu_1xlls7qtF3MJCNyJiWB77-ixzix&sz=w1920',
         imageAlt: 'Step 3'
     },
     {
@@ -55,7 +55,7 @@ const journeySteps = [
             { icon: <ClockIcon />, text: '耗時：約 10 分鐘' },
             { icon: <CheckIcon />, text: '重點：長期規劃、會員服務' }
         ],
-        imageUrl: 'https://drive.google.com/thumbnail?id=1NU_urhl2bxbNA_VESzOW7kw7kEliCFz5&sz=w800',
+        imageUrl: 'https://drive.google.com/thumbnail?id=1ZFHme0Pw-J73Kx4ETyOpkAx2O0Mnwrvi&sz=w1920',
         imageAlt: 'Step 4'
     }
 ];

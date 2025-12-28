@@ -1,7 +1,21 @@
-
 import React from 'react';
 
 const Hero: React.FC = () => {
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+            const headerOffset = 80; // Header height is h-20, which is 80px
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+    
     return (
         <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
             <img 
@@ -23,10 +37,10 @@ const Hero: React.FC = () => {
                     在綠力 GreenPower，我們融合了頂尖的 AI 檢測科技與深厚的東方調理智慧，為您打造獨一無二的身心修復空間。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                    <a href="#journey" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(5,150,105,0.4)] hover:shadow-[0_0_30px_rgba(5,150,105,0.6)]">
+                    <a href="#journey" onClick={(e) => handleLinkClick(e, '#journey')} className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(5,150,105,0.4)] hover:shadow-[0_0_30px_rgba(5,150,105,0.6)]">
                         開啟健康旅程
                     </a>
-                    <a href="#technology" className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-bold text-lg transition-all">
+                    <a href="#technology" onClick={(e) => handleLinkClick(e, '#technology')} className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-bold text-lg transition-all">
                         探索智能設備
                     </a>
                 </div>
